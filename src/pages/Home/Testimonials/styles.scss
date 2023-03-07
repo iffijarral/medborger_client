@@ -1,0 +1,40 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+.testimonials {
+    padding: 2em 2em;
+    color: #707070;
+    background-color: $backgroundColor;   
+}
+
+
+.carousel .control-dots {
+    display: none;
+}
+
+  @media only screen and (min-width: 43em) {
+    .testimonial {
+        box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+        background-color: white;
+        border-radius: 2rem;
+        max-width: 35em;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        
+        cite {
+            margin-left: 1em;
+            padding-bottom: 1em;
+        }
+        .picArea{
+            
+            img {            
+                
+                z-index: 99;
+                border-top-left-radius: 2rem;
+                border-bottom-left-radius: 2rem;
+            }
+        } 
+        
+    }
+  }

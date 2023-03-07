@@ -1,0 +1,135 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+.tests {
+       
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    div {
+        display: grid; 
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        // grid-template-columns: repeat(auto-fit, 2rem);
+        justify-content: center;
+        column-gap: 1.25rem;
+        row-gap: 1rem;
+        a {
+            @include testButtonStyle;
+        }
+    }
+}
+
+.testContainer {
+    padding: 2em;
+    background: $backgroundColor;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    div.content {        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        div.question {
+            min-height: 3.5em;
+            display: flex;
+            align-items: flex-start;
+        }
+        span {
+            display: flex;
+            padding: 0 1em;
+        }
+        h4 {
+            color: $textColor;   
+            margin: 0; 
+            padding-left: 0.5em;        
+        }
+
+        div.options {
+            padding: 1.5em;
+            background: white;
+            box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+            border-radius: 2rem;
+            width: 100%;
+            min-height: 10em;
+            display: flex;
+            align-items: center;
+            ul li {
+                margin-top: 1em;
+                display: flex;
+                align-items: center;
+                label {
+                    padding-left: 0.5em;
+                }
+
+                &:first-child {
+                    margin-top: 0;
+                }
+            }           
+        }
+
+        div.buttons {
+            padding-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(8, minmax(0, 1fr));
+            column-gap: 1rem;
+            row-gap: 1rem;
+
+            a {
+                @include questionButtonStyle;
+            }
+
+            .error{
+                background-color: red;
+                color: white;
+            }
+        }
+        div.navigationButtons {
+            padding-top: 1rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            a {
+                @include testButtonStyle;
+            }
+        }
+    }
+   
+}
+.MuiDialogTitle-root {
+    text-align: center;
+    background-color: $logoColor;
+
+    h2 {
+        text-align: center;
+        color: white;
+    }
+}
+.resultCard {
+    width: 25em;
+
+    .pass {
+        color: green;
+    }
+    .fail {
+        color: red;
+    }
+    .info {
+        color: $primaryColor;
+    }
+}
+
+@media only screen and (min-width: 43em) {
+    .testContainer div.content{
+        width: 50%;
+    }
+    .tests div {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    .footer {
+        display: none;
+    }
+}

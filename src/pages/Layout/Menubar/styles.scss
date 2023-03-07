@@ -1,0 +1,116 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+.Nav__black {
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.95);
+    width: 100%;
+}
+.fixed {
+    position: fixed;
+    top: 0;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 2em;
+    z-index: 100;
+    width: 100%;
+}
+.logo {
+    text-decoration: none;
+    font-weight: bold;
+    color: $logoColor;
+    font-size: 1.5rem;
+
+    span {
+        color: $primaryColor;
+    }
+}
+.menuLeft {
+    display: flex;
+}
+.menuMiddle {
+    display: flex;
+    flex: 2;
+    justify-content: center;
+
+    ul {
+        display: flex;
+        li a:hover {
+            color: $logoColor;
+        }
+    }
+}
+
+.menuRight {
+    display: flex;
+}
+.navbar.active {
+    background: white;
+    box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+}
+
+.testNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    padding: 2em;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+
+    .timer {
+        display: flex;
+        h1 {
+            // width: 3rem;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .backArrow {
+        color: $lightSecondaryColor;
+    }
+}
+.testNavbar.hide {
+    display: none;
+}
+
+.mobileNavLinksContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mobileLinksWrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    list-style: none;
+    background-color: #fff;
+    width: 100%;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    ul {
+        width: 100%;
+    }
+    li {
+        display: flex;
+
+        justify-content: flex-start;
+        align-items: center;
+        padding: 1em;
+        border-bottom: 0.5px solid #ccc;
+
+        a:hover {
+            color: $logoColor;
+        }
+    }
+}

@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+//COLORS
+$primaryColor: #056aa8;
+$secondaryColor: rgb(49, 45, 45);
+$lightSecondaryColor: #999;
+$borderColor: #056aa8;
+$backgroundColor: #cccccc1f;
+$textColor: #707070;
+$logoColor: salmon;
+$darkLogoColor: #f44336;
+$titleFont: "Poppins";
+
+@mixin subButtonStyle() {    
+    color: $primaryColor;    
+    box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+    padding: 0.4rem 1rem;
+    border-radius: 5em;        
+    border: 0.5px solid $logoColor;    
+    display: block;
+    width: fit-content;
+    
+    &:hover {
+        background-color: $logoColor;
+        color: white;
+    }
+}
+
+@mixin buttonStyle() {
+    fill: #ffffff;
+    color: #ffffff;
+    
+    box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+    padding: 0.8rem 2rem;
+    border-radius: 5em;
+    background-color: $logoColor; /* default color */
+
+    /* "to left" / "to right" - affects initial color */
+    background: linear-gradient(to left, $logoColor 50%, $primaryColor 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+    display: block;
+    width: fit-content;
+
+    &:hover {
+        background-position: left;
+        color: white;
+    }
+}
+
+@mixin flatButtonStyle() {
+    
+    color: #ffffff;
+    background-color: $borderColor;
+    box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+    padding: 0;
+    border: none;
+    // width: 35ch;
+    cursor: pointer;
+    //padding: 1rem 6rem;    
+    height: 3.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $logoColor; /* default color */
+    border-radius: 5px;    
+    background: linear-gradient(to left, $logoColor 50%, $primaryColor 50%) right;
+    background-size: 200%;
+    transition: .5s ease-out;
+        
+
+    &:hover {
+        background-position: left;    
+        color: white;
+    }
+}
+
+
+@mixin testButtonStyle {
+    background: white;
+    box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5em;  
+    display: flex;
+    justify-content: center;
+    //margin: 1em;                  
+    border: 0.5px solid #ccc;
+    text-align: center;
+    //background: linear-gradient(to left, $logoColor 50%, $primaryColor 50%) right;
+    //font-size: .9rem;
+    &:hover {
+        background-color: $logoColor;
+        cursor: pointer;  
+        color: white;  
+    }
+}
+
+@mixin questionButtonStyle {
+    background: white;
+    box-shadow: 0px 5px 10px 0px RGB(0 0 0 / 15%);    
+    border-radius: 5em;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    //margin: 1em;                  
+    border: 0.5px solid #ccc;
+    text-align: center;
+    //background: linear-gradient(to left, $logoColor 50%, $primaryColor 50%) right;
+    //font-size: .9rem;
+    &:hover {
+        background-color: $logoColor;
+        cursor: pointer;  
+        color: white;  
+    }
+}

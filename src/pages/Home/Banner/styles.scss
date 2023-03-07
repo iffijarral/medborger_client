@@ -1,0 +1,11 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+.banner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    a {
+        @include buttonStyle;                        
+    }
+}

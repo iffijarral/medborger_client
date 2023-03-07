@@ -1,0 +1,12 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+.factsWrapper {    
+
+    img {
+        max-height: 25em;
+    }
+    .carousel.carousel-slider .control-arrow:hover {
+        background: none;
+    }
+    
+}

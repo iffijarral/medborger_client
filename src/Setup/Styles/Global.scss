@@ -1,0 +1,92 @@
+@import "./CommonStyles.scss";
+
+// General HTML Tag Style //
+* {
+    box-sizing: border-box;
+}
+html,
+body, #root {
+    min-height: 100vh;
+    font-size: calc(1vh + 1vw + 0px);
+    font-weight: 100;
+    max-width: 82em;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+}
+body {
+    // background: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    font-family: $titleFont;
+}
+
+section {
+    padding: 2em 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      
+}
+a {
+    color: $borderColor;
+    font-size: 1em;
+    padding: 0.1em 1em;
+    text-decoration: none;
+
+    &:hover {
+        color: $logoColor;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: $textColor;
+}
+h1 {
+    position: relative;
+    font-size: clamp(1vh , 4vw , 60px);        
+    text-align: center;
+    color: $textColor;    
+}
+h2 {
+    font-size: clamp(1vh , 4vw , 30px);        
+    color: $textColor;
+}
+h4 {
+    color: $textColor;
+}
+p {    
+    text-align: left;
+    color: $textColor;
+    line-height: 2rem;
+}   
+
+.footer{
+    padding: 2em;        
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    box-shadow: 0px 5px 10px 0px RGB(0 0 1 / 35%);
+    ul {
+        display: flex;
+        li a {
+            font-size: 0.7rem;
+        }
+    }   
+}
+
+.mainApp{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 43em) {  
+    section {
+        padding: 2em 0;
+    }
+    a {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,38 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+.about {    
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    
+    h1 {
+        text-align: left;
+    }
+}
+
+.introWrapper {   
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    
+}
+.imgBlock {
+    height: 250px;
+}
+@media (min-width: 43em) {    
+    .about div {
+        width: 70%;
+    }    
+    .introWrapper {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 62em) {    
+    .section {
+        flex-direction: column;
+    }
+   
+}

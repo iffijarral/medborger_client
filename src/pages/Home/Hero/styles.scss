@@ -1,0 +1,118 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+
+.HeaderSection {
+    padding: 2em;
+    width: 100%;
+    // height: 100vh;         
+    display: flex;
+    align-items: center;      
+}
+/*.HeaderSection::before {
+    background-image: url("../images/pass8.jpg");
+    background-size: cover;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    img {
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: calc(100% + 2px);
+        max-width: none;
+        height: calc(100% + 2px);
+        object-fit: cover;
+    }
+    //opacity: 0.4;
+}*/
+.hero {
+    display: grid;
+    grid-template-columns: repeat(20, minmax(0, 1fr));
+    row-gap: 3em;        
+}
+.subhead {
+    text-transform: uppercase;
+    color: #707070;
+    letter-spacing: 0.2em;
+    grid-row: 1;
+    grid-column: 1 / span 16;
+}
+
+.item {
+    grid-column: 1 / span 19;
+    position: relative;
+    grid-row: 1;
+    z-index: 1;    
+        
+    h1 {
+        font-size: clamp(1vh , 7vw , 60px);
+        line-height: 1.3em;
+        // margin-top: 0.2em;
+        text-align: left;
+        //max-width: 20ch;
+    }
+    a {
+        @include buttonStyle;                        
+    }
+}
+.rightSection {
+    display: none;
+}
+@media only screen and (min-width: 62em) {
+    .HeaderSection {
+        // align-items: flex-end;          
+        padding: 3.1em;
+        height: calc(100vh - 100px);
+    }
+    .hero{
+        grid-template-columns: repeat(24, minmax(0, 1fr));
+        column-gap: 1.25em;        
+    }
+    .item {
+        grid-column: 1 / span 16;
+
+        h1 {
+            font-size: clamp(1vh , 5vw , 60px);            
+            //max-width: 20ch;
+        }
+    }
+    .rightSection {
+        grid-row: 1;
+        grid-column: 19 / span 6;
+        display: flex;
+        align-items: center;
+        .square {
+            height: 15rem;
+            width: 15rem;
+            border: 1px solid gray;
+            border-top-right-radius: 3em;
+            ul {
+                margin: 0;
+                padding-left: 0.1em;
+                padding-top: 1.7em;
+                li {
+                    text-align: left;
+                    font-size: 1.1rem;
+                    margin-bottom: 1.5em;
+                    margin-left: 2em;
+                    position: relative;
+                    &:before {
+                        content: "";
+                        left: -2.6em;
+                        position: absolute;
+                        width: 20px;
+                        height: 20px;
+                        background-image: url("/Setup/Assets/Images/check2.svg");
+                        background-size: contain;
+                        margin-right: 0.5em;
+                    }
+                }
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,75 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+.wrapper {
+    padding: 2em 3em 4em 3em;
+    // height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container {
+    padding: 2em;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    // grid-template-columns: repeat(auto-fit, 18rem);
+    column-gap: 0.4em;
+    row-gap: 1em;
+    justify-content: center;
+    div.card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid $borderColor;
+        // height: 20em;
+        padding-bottom: 1em;
+        position: relative;
+        span.priceTag {
+            position: absolute;
+            right: -0.0625rem;
+            top: 1rem;
+            padding: 0.2rem 0.5rem;
+            background-color: $primaryColor;
+            color: white;
+        }
+        div.cardHeading {
+            width: 100%;
+            h2 {
+                padding-left: 1rem;
+                text-align: left;
+                color: $lightSecondaryColor;
+            }
+        }
+
+        a {
+            width: 24ch !important;
+            text-transform: uppercase;
+            @include flatButtonStyle;            
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+
+            li {
+                font-size: 1rem;
+                //  padding-bottom: 3em;
+                h2 {
+                    margin: 0.5em;
+                    // padding: 0;
+                }
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 43em) {  
+    .container {
+        padding: 0;        
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

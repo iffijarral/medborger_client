@@ -1,0 +1,45 @@
+@import "src/Setup/Styles/CommonStyles.scss";
+
+.blocksWrapper {    
+    background-color: #2a94f40d;    
+    background: linear-gradient(to bottom, RGB(0,0,0,1.0), RGB(0,0,0,0)), url('/Setup/Assets/Images/block3.jpeg');
+    background-position: bottom;    
+    background-size: cover;
+    background-attachment: fixed;
+
+    .blocksContainer {
+        // grid-template-columns: repeat(auto-fit, minmax(10rem, 18rem));
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 0.4em;
+        row-gap: 1em;
+        padding: 2em;
+        div.block {
+            display: flex;
+            flex-direction: column;
+            text-align: center; 
+            align-items: center;
+            //justify-content: space-around;
+            border: 1px solid #ccc;      
+            
+            .icon {
+                color: white;
+                font-size: 4rem;
+            }
+        }
+    
+        .blockParagraph, .blockHeading{
+            text-align: center;
+            color: white;
+        }
+    }
+   
+}
+
+@media (min-width: 43em) {  
+    .blocksContainer {
+        padding: 0;       
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
