@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 // Context manager
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import IconButton from '@mui/material/IconButton';

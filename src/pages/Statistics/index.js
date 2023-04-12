@@ -1,15 +1,15 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { withStyles, makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableCell, {tableCellClasses} from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // To call APIs
 import { getRequest } from 'src/Setup/AxiosClient';
@@ -45,7 +45,7 @@ function createData(test, testdate, rightAnswers) {
     return { test, testdate, rightAnswers, result };
 }
 
-const useStyles = makeStyles({
+const useStyles = styled({
     root: {
         // width: '100%',
     },
@@ -54,24 +54,25 @@ const useStyles = makeStyles({
     },
 });
 
-const StyledTableCell = withStyles((theme) => ({
-    head: {
-        backgroundColor: 'salmon',
-        color: theme.palette.common.white,
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: 'salmon',
+      color: theme.palette.common.white,
     },
-    body: {
-        fontSize: 14,
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
     },
+  }));
 
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-    root: {
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
+  const StyledTableRow = styled(TableRow)(({ theme }) => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
     },
-}))(TableRow);
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
 
 export default function Statistics() {
 

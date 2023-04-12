@@ -7,18 +7,18 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 
 // Form validation
-import { resetPasswordSchema } from 'src/Setup/Validation/ResetpasswordValidation';
+import { resetPasswordSchema } from 'src/Components/Validation/ResetpasswordValidation';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Context manager
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // Util
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 
 // Stylesheet
-import 'src/Setup/Auth/Styles.scss';
+import 'src/Components/Auth/Styles.scss';
 
 // To call APIs
 import { postRequest } from 'src/Setup/AxiosClient';

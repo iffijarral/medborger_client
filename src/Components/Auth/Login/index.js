@@ -12,17 +12,17 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Button from '@mui/material/Button';
 
 // Form validation
-import { userSchema } from 'src/Setup/Validation/UserValidation';
+import { userSchema } from 'src/Components/Validation/UserValidation';
 import { set, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Context manager
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // Util
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 // import * as myConstants from 'Constants';
-import 'src/Setup/Auth/Styles.scss';
+import 'src/Components/Auth/Styles.scss';
 
 // To call APIs
 import { postRequest } from 'src/Setup/AxiosClient';
@@ -56,20 +56,27 @@ import { postRequest } from 'src/Setup/AxiosClient';
             }
 
             try { 
-
+                // Show rotating loading icon
                 setLoginLoading(true);
 
-                const response = await postRequest('users/login', userData); // Authenticate user                  
+                // Authenticate user with his entered credentials
+                const response = await postRequest('users/login', userData);                   
                 
                 if (response.status === 200) {
 
+                    // Save state into auth context
                     authContext.setAuthState(response.data);
                     
-                    authContext.saveCookie(response.data);
+                    const token = response.data.token;
+                    console.log(token)
+                    // Save token into cookie
+                    authContext.setHTTPonlyCookie(token);
 
+                    // Stop and hide rotating loading icon
                     setLoginLoading(false);
 
-                    handleDialogClose(); // To close dialog               
+                    // close login dialog
+                    handleDialogClose();                
 
                 }
                 else {
@@ -79,12 +86,18 @@ import { postRequest } from 'src/Setup/AxiosClient';
                         reason: 'error',
                         message: response.data.message
                     }
-                    snakkebarAction(snakkebarObject)
 
+                    // Show snakkebar with given parameters
+                    snakkebarAction(snakkebarObject)
+                    
+                    // close login dialog
                     setLoginLoading(false);
                 }
 
+                // Reset password input field
                 resetField("password")
+
+                // Set focus to password input field
                 setFocus("password", { shouldSelect: true })
 
             } catch (error) {
@@ -94,10 +107,11 @@ import { postRequest } from 'src/Setup/AxiosClient';
         };         
 
         const handleDialogClose = () => {
-
+            // Reset form
             reset()
             
-            props.onClick(); // to close dialog
+            // Close dialog
+            props.onClick(); 
         }
         
         const handleSiblingDialogs = (e, action) => {

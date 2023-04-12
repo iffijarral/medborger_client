@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // Material UI
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 // Navbar state
-import { NavbarContext } from 'src/Setup/Contexts/NavbarContext';
+import { NavbarContext } from 'src/Components/Contexts/NavbarContext';
 
 import './Menubar/styles.scss';
 

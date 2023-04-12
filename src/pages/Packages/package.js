@@ -1,9 +1,9 @@
 import React, { useState, useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import HandleDialogs from 'src/Setup/Util/HandleDialogs';
+import HandleDialogs from 'src/Components/Util/HandleDialogs';
 
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 import './styles.scss';
 

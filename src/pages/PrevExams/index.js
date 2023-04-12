@@ -1,20 +1,19 @@
-import React, { useState, useEffect, Fragment, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 //Material ui
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
-import { grey } from '@mui/material/colors';
 import { Box, Button } from '@mui/material';
 
 import ImgExam from 'src/Setup/Assets/Images/exam';
 
 import { getRequest } from 'src/Setup/AxiosClient';
 
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 
 const PrevExams = () => {
     const [loading, setLoading] = useState(false);
@@ -76,10 +75,10 @@ const ExamCard = ({ id, year }) => {
         snakkebarRef.current.handleSnakkebarAction(actionObject); // This function is in SnackBar.js
     }
 
-    const handleClick = (examid, season) => {
+    const handleClick = (season) => {
 
         if (authState.status && parseInt(authState.noOfTests) > 0) {
-            navigate(`/prevexams/${examid}/${season}`);
+            navigate(`/prevexams/${year}/${season}`);
         } else {
             // call function to show snakkebar along with following data        
             const snakkebarObject = {
@@ -96,14 +95,14 @@ const ExamCard = ({ id, year }) => {
             <Card variant='outlined' sx={{ padding: '1em', margin: '1em' }}>
                 <CardHeader avatar={
                     <Avatar aria-label="Exam">
-                        <img src={ImgExam} style={{ width: 'inherit' }} />
+                        <img src={ImgExam} style={{ width: 'inherit' }} alt='exam' />
                     </Avatar>
                 } title={year} titleTypographyProps={{ variant: 'h4' }} />
                 <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Button size="small" variant='outlined' component="label" onClick={() => handleClick(id, 'Summer')}>
+                    <Button size="small" variant='outlined' component="label" onClick={() => handleClick('Summer')}>
                         Summer
                     </Button>
-                    <Button size="small" variant='outlined' component="label" onClick={() => handleClick(id, 'Winter')}>
+                    <Button size="small" variant='outlined' component="label" onClick={() => handleClick('Winter')}>
                         Winter
                     </Button>
                 </CardActions>

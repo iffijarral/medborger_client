@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
-import { NavbarContext } from 'src/Setup/Contexts/NavbarContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
+import { NavbarContext } from 'src/Components/Contexts/NavbarContext';
 import { getRequest } from 'src/Setup/AxiosClient';
 
 export const TestLogic = ({ snakkebarAction }) => {
@@ -37,7 +37,7 @@ export const TestLogic = ({ snakkebarAction }) => {
     }
 
     const handleClick = (index, testID) => {
-             
+         
         if (authState.status && index < parseInt(authState.noOfTests)) {
             contextNavbar.setNavbar(false);
             navigate(`/tests/${testID}`);

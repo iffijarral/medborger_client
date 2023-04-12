@@ -3,7 +3,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { Fragment, useState } from "react";
 import { useIdleTimer } from "react-idle-timer";
 
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 const UseIdle = ({ idleTime = 1 }) => {
     const [alive, setAlive] = useState(false);

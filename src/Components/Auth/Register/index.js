@@ -10,33 +10,37 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Button from '@mui/material/Button';
 
 // Form validation
-import { userRegisterSchema } from 'src/Setup/Validation/RegisterFormValidation';
+import { userRegisterSchema } from 'src/Components/Validation/RegisterFormValidation';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Context manager
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // Util
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 
 // Stylesheet
-import 'src/Setup/Auth/Styles.scss';
+import 'src/Components/Auth/Styles.scss';
 
 // To call APIs
 import { postRequest } from 'src/Setup/AxiosClient';
 
+// This is called for registering or creating new user.
+// On creation of user, user needs to login to proceed. 
 export default function RegisterDialog(props) {
 
     const navigate = useNavigate();   
 
     const authContext = useContext(AuthContext);
 
+    // This is for handling and validation of user input
     const { register, reset, handleSubmit, formState: { errors } } = useForm({
 
         resolver: yupResolver(userRegisterSchema),
     });
 
+    // The reference of snakkebar to show messages.
     let snakkebarRef = useRef('');
 
     // Data handler on form submit
@@ -55,12 +59,12 @@ export default function RegisterDialog(props) {
             const response = await postRequest('users/', userData); 
 
             if (response.status === 201) {
+                // As we are forcing user to login after getting registered or creation
+                // authContext.setAuthState(response.data);
 
-                authContext.setAuthState(response.data);
+                // authContext.saveCookie(response.data);
 
-                authContext.saveCookie(response.data);
-
-                const msg = props.toLocation ? 'User created successfully' : 'User created, Please login to proceed.';
+                const msg = "User created successfully, Please login to proceed."
 
                 const snakkebarObject = {
                     severity: 'success',
@@ -72,7 +76,7 @@ export default function RegisterDialog(props) {
 
                 // call function to show snakkebar along with following data
                 const snakkebarObject = {
-                    reason: 'error',
+                    severity: 'error',
                     message: response.data.message
                 }
                 snakkebarAction(snakkebarObject)
@@ -102,8 +106,10 @@ export default function RegisterDialog(props) {
     const snakkebarAction = (actionObject) => {
 
         snakkebarRef.current.handleSnakkebarAction(actionObject); // This function is in SnackBar.js
-
-        handleDialogClose()
+        
+        // If there is an error, don't close the dialog box        
+        if(actionObject.severity !== 'error')
+            handleDialogClose()
     }
 
     return (

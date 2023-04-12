@@ -8,16 +8,16 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 
 import { useMediaQuery } from 'react-responsive'
-import { DeviceSize } from 'src/Setup/Util/DeviceSize';
+import { DeviceSize } from 'src/Components/Util/DeviceSize';
 
 // custom components
 import MobileNav from './MobileNav';
 import AccountButton from './Account';
-import HandleDialogs from 'src/Setup/Util/HandleDialogs';
+import HandleDialogs from 'src/Components/Util/HandleDialogs';
 
 import { MenuPages } from 'src/Setup/Data';
 // to control navbar state
-import { NavbarContext } from 'src/Setup/Contexts/NavbarContext';
+import { NavbarContext } from 'src/Components/Contexts/NavbarContext';
 // styles
 import './styles.scss'
 

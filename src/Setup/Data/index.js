@@ -161,7 +161,7 @@ export const IntroData = (props) => {
             to: '/packages',
             heading: 'Packages',
             icon: 'ShoppingCartIcon',
-            description: 'Choose one of the packages and get access to tests database'
+            description: 'Choose one of the packages and get access to assiciated tests'
         },
         {
             to: '/tips',

@@ -3,14 +3,14 @@ import React, { forwardRef, useImperativeHandle, useState } from 'react'
 // Mui components
 import Snackbar from '@mui/material/Snackbar';
 import { Alert } from '@mui/material'
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/system';
 
 // function Alert(props) {
 //   console.log("in snackbar alert")
 //   return <MuiAlert elevation={6} variant="filled" {...props} />;
 // }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = styled((theme) => ({
   root: {
     width: '100%',
     '& > * + *': {
@@ -56,8 +56,7 @@ const MySnackbar = forwardRef((props, ref) => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-
+    <div className={classes.root}>    
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
         <Alert elevation={6} onClose={handleClose} severity={severity}>
           {msg}

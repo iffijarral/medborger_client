@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { TestLogic } from './TestLogic'
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 import './styles.scss'
 
 function Tests() {    

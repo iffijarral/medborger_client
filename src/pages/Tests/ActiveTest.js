@@ -5,11 +5,11 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import StopIcon from '@mui/icons-material/Stop';
 // To display msgs
-import AlertDialog from 'src/Setup/Util/AlertDialog';
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import AlertDialog from 'src/Components/Util/AlertDialog';
+import MySnackbar from 'src/Components/Util/SnackBar';
 // To handle auth state
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
-import { NavbarContext } from 'src/Setup/Contexts/NavbarContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
+import { NavbarContext } from 'src/Components/Contexts/NavbarContext';
 import { TestNavbar } from 'src/pages/Layout/TestNavbar';
 
 import { getRequest, postRequest } from 'src/Setup/AxiosClient';
@@ -48,35 +48,35 @@ const ActiveTest = () => {
 
     //fetching tests from database
     useEffect(() => {
+        
+        const getData = async () => {
+            if ((auth.authState.status && testID <= parseInt(auth.authState.noOfTests)) || testID === '1') { // because first test is open for every one.
 
+                const response = await getRequest('tests/' + testID); // Fetch Data
+                
+                if (response.status === 200) {
+                    setQuestions(response.data.Questions);
+
+                    // I used following technique to initialize userAnswers array with false value.
+                    for (let a = 0; a < response.data.Questions.length; a++) {
+                        updatedState[a] = false;
+
+                        setUserAnswers([...userAnswers, ...updatedState]);
+
+                    }
+                }
+
+                contextNavbar.setNavbar(false); // Hide primary navbar
+
+            } else {
+                console.log(testID)
+                contextNavbar.setNavbar(true);
+                navigate(`/tests`); // If user tries to bypass and tries to access test by not clicking test no in tests page, but through url parameter.            
+            }
+        }
         getData()
 
     }, []);
-
-    const getData = async () => {
-        if ((auth.authState.status && testID <= parseInt(auth.authState.noOfTests)) || testID == 1) { // because first test is open for every one.
-
-            const response = await getRequest('tests/' + testID); // Fetch Data
-
-            if (response.status === 200) {
-                setQuestions(response.data.Questions);
-
-                // I used following technique to initialize userAnswers array with false value.
-                for (let a = 0; a < response.data.Questions.length; a++) {
-                    updatedState[a] = false;
-
-                    setUserAnswers([...userAnswers, ...updatedState]);
-
-                }
-            }
-
-            contextNavbar.setNavbar(false); // Hide primary navbar
-
-        } else {
-
-            navigate(`/tests`); // If user tries to bypass and tries to access test by not clicking test no in tests page, but through url parameter.            
-        }
-    }  
 
     // following function is called on time finished.
     const timer = () => {
@@ -123,7 +123,7 @@ const ActiveTest = () => {
 
         setBtoomButtons(true);
 
-        if (auth.authState && auth.authState.status) {            
+        if (auth.authState && auth.authState.status) {
             // save results into database;
             saveResults(objResult.rightAnswers);
         }
@@ -198,7 +198,7 @@ const ActiveTest = () => {
 
     const saveResults = async (rightAnswers) => {
 
-        const payload = {            
+        const payload = {
             userID: auth.authState.id,
             testID, // It is received from params
             rightAnswers
@@ -236,12 +236,13 @@ const ActiveTest = () => {
                 </div>
                 <div className="options">
                     <ul>
-                        {questions.length > 0 && questions[index]['op1'] != '' &&
+                        {questions.length > 0 && questions[index]['op1'] !== '' &&
                             <li>
                                 <input
                                     type="radio"
                                     id="option1"
                                     name="option"
+                                    style={{width: 'auto'}}
                                     value={questions.length > 0 && questions[index]['op1']}
                                     checked={questions[index]['op1'] === userAnswers[index]}
                                     onChange={handleChange}
@@ -255,13 +256,13 @@ const ActiveTest = () => {
 
                             </li>
                         }
-                        {questions.length > 0 && questions[index]['op2'] != '' &&
+                        {questions.length > 0 && questions[index]['op2'] !== '' &&
                             <li>
                                 <input
                                     type="radio"
                                     id="option2"
-                                    name="option"
-                                    style={bottomButtons && questions[index]['answer'] === questions[index]['op2'] ? { color: 'green' } : null}
+                                    name="option"                                    
+                                    style={{width: 'auto'}}
                                     value={questions.length > 0 && questions[index]['op2']}
                                     checked={questions[index]['op2'] === userAnswers[index]}
                                     onChange={handleChange}
@@ -276,13 +277,13 @@ const ActiveTest = () => {
 
                             </li>
                         }
-                        {questions.length > 0 && questions[index]['op3'] != '' &&
+                        {questions.length > 0 && questions[index]['op3'] !== '' &&
                             <li>
                                 <input
                                     type="radio"
                                     id="option3"
                                     name="option"
-                                    style={bottomButtons && questions[index]['answer'] === questions[index]['op3'] ? { color: 'green' } : null}
+                                    style={{width: 'auto'}}
                                     value={questions.length > 0 && questions[index]['op3']}
                                     checked={questions[index]['op3'] === userAnswers[index]}
                                     onChange={handleChange}

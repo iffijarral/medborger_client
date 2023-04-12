@@ -10,18 +10,18 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Button from '@mui/material/Button';
 
 // Form validation
-import { changePasswordSchema } from 'src/Setup/Validation/ChangePasswordValidation';
+import { changePasswordSchema } from 'src/Components/Validation/ChangePasswordValidation';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Context manager
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // Util
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 
 // Stylesheet
-import 'src/Setup/Auth/Styles.scss';
+import 'src/Components/Auth/Styles.scss';
 
 // To call APIs
 import { putRequest } from 'src/Setup/AxiosClient';

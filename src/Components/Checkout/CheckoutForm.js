@@ -9,7 +9,7 @@ import { Button, CircularProgress, Typography } from "@mui/material";
 import { postRequest } from 'src/Setup/AxiosClient';
 
 // Context manager
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 const CheckoutForm = ({ packageID, authState }) => {
 

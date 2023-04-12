@@ -6,7 +6,10 @@ import { Elements, ElementsConsumer } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 // to call API
 import { getRequest, postRequest } from 'src/Setup/AxiosClient';
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+// to call Payment API
+import { postPaymentRequest } from "src/Setup/AxiosClientPayment";
+
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // Material ui component
 import CircularProgress from '@mui/material/CircularProgress';
@@ -60,7 +63,7 @@ const Checkout = () => {
             receipt_email: auth.authState.email
         }
         setLoading(true)
-        const response = await postRequest('payments/create-payment-intent', payload, auth.authState.token)
+        const response = await postPaymentRequest('create-payment-intent', payload, auth.authState.token)
         if (response.status === 200)
             setClientSecret(response.data.clientSecret)
         else {

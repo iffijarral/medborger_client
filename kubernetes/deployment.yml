@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: school-app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: school-app
+  template:
+    metadata:
+      labels:
+        app: school-app
+    spec:
+      containers:
+      - name: school-app
+        image: localhost:5001/my_repo:school-app
+        ports:
+        - containerPort: 3000

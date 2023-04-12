@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { NavbarContext } from 'src/Setup/Contexts/NavbarContext';
-import MailtoButton from 'src/Setup/Util/MailtoButton';
+import { NavbarContext } from 'src/Components/Contexts/NavbarContext';
+import MailtoButton from 'src/Components/Util/MailtoButton';
 
 export default function Footer() {
 

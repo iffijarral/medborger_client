@@ -11,15 +11,15 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Button from '@mui/material/Button';
 
 // Form validation
-import { forgotPasswordSchema } from 'src/Setup/Validation/ForgotPasswordValidation';
+import { forgotPasswordSchema } from 'src/Components/Validation/ForgotPasswordValidation';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 // Util
-import MySnackbar from 'src/Setup/Util/SnackBar';
+import MySnackbar from 'src/Components/Util/SnackBar';
 
 // Stylesheet
-import 'src/Setup/Auth/Styles.scss';
+import 'src/Components/Auth/Styles.scss';
 
 // To call APIs
 import { postRequest } from 'src/Setup/AxiosClient';

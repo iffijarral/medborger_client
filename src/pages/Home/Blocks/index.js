@@ -13,7 +13,7 @@ import { IntroData } from 'src/Setup/Data';
 
 // styles
 import './styles.scss';
-import { Avatar, Box, Card, CardContent, CardHeader, Typography } from '@mui/material';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 
 export default function Blocks() {
 

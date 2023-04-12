@@ -10,7 +10,7 @@ import { getRequest } from 'src/Setup/AxiosClient';
 
 const ActivePrevExam = () => {
 
-    const { examid, season } = useParams();
+    const { year, season } = useParams();
 
     const [loading, setLoading] = useState(false);
     const [exam, setExam] = useState({});
@@ -23,7 +23,7 @@ const ActivePrevExam = () => {
 
     const getExam = async () => {        
         setLoading(true); // Start loading
-        const response = await getRequest('prevexams/'+examid+'/'+season); // Fetch Data             
+        const response = await getRequest('prevexams/'+year+'/'+season); // Fetch Data             
         setLoading(false)        
         if (response.status === 200) {            
             setExam(response.data);

@@ -1,12 +1,12 @@
 import React, { Fragment, forwardRef, useImperativeHandle, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 // Custom components
-import ChangePasswordDialog from 'src/Setup/Auth/ChangePassword';
-import LoginDialog from 'src/Setup/Auth/Login';
-import RegisterDialog from 'src/Setup/Auth/Register';
-import ForgotPasswordDialog from 'src/Setup/Auth/ForgotPassword';
+import ChangePasswordDialog from 'src/Components/Auth/ChangePassword';
+import LoginDialog from 'src/Components/Auth/Login';
+import RegisterDialog from 'src/Components/Auth/Register';
+import ForgotPasswordDialog from 'src/Components/Auth/ForgotPassword';
 
-import { AuthContext } from 'src/Setup/Contexts/AuthContext';
+import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 const HandleDialogs = forwardRef((props, ref) => {
 
