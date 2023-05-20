@@ -33,7 +33,7 @@ const Fact = (props) => {
     
     return (
         <div>
-            <img src={props.pic} />
+            <img src={props.pic} alt={props.description} />
             <h3>{props.description}</h3>
         </div>
     );

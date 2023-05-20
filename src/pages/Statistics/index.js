@@ -89,28 +89,28 @@ export default function Statistics() {
 
     useEffect(() => {
 
-        getData(authState.id, authState.token)
+        const getData = async (id, token) => {
 
-    }, [authState.id]);
-
-    const getData = async (id, token) => {
-
-        const response = await getRequest('statistics/' + id, token);
-
-        if (response.status === 200) {
-            const objStatistics = response.data[0].Statistics;
-
-            if (objStatistics.length > 0) {
-                for (let a = 0; a < objStatistics.length; a++) {
-
-                    updatedState[a] = createData(objStatistics[a].Test.title, new Date(objStatistics[a].testdate).toLocaleString("lookup"), objStatistics[a].answers);
-
-                    setRows([...rows, ...updatedState]);
-                };
-
+            const response = await getRequest('statistics/' + id, token);
+    
+            if (response.status === 200) {
+                const objStatistics = response.data[0].Statistics;
+    
+                if (objStatistics.length > 0) {
+                    for (let a = 0; a < objStatistics.length; a++) {
+    
+                        updatedState[a] = createData(objStatistics[a].Test.title, new Date(objStatistics[a].testdate).toLocaleString("lookup"), objStatistics[a].answers);
+    
+                        setRows([...rows, ...updatedState]);
+                    };
+    
+                }
             }
         }
-    }
+
+        getData(authState.id, authState.token)
+
+    }, [authState.id]);    
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);

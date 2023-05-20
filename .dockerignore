@@ -1,1 +1,14 @@
-node_module
+# Exclude files and directories commonly unnecessary in Docker images
+
+# Files
+.git
+.svn
+.dstore
+.DS_Store
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Directories
+node_modules
+bower_components

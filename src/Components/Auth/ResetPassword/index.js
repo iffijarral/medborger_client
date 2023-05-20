@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // Material UI components
 import TextField from '@mui/material/TextField';
@@ -10,9 +10,6 @@ import Button from '@mui/material/Button';
 import { resetPasswordSchema } from 'src/Components/Validation/ResetpasswordValidation';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-// Context manager
-import { AuthContext } from 'src/Components/Contexts/AuthContext';
 
 // Util
 import MySnackbar from 'src/Components/Util/SnackBar';
@@ -29,10 +26,7 @@ export default function ResetPassword() {
     const [loading, setLoading] = useState(false);
     
 
-    const { token } = useParams(); // Retrieve token sent by server
-    
-    const navigate = useNavigate();    
-        
+    const { token } = useParams(); // Retrieve token sent by server         
 
     let snakkebarRef = useRef('');
 

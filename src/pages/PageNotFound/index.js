@@ -5,7 +5,7 @@ import PageNotFoundImg from 'src/Setup/Assets/Images/Page-Not-Found.jpeg';
 const PageNotFound = () => {
     return (
         <section>
-            <img src={PageNotFoundImg} />
+            <img src={PageNotFoundImg} alt="Page not found" />
             <p style={{ textAlign: "center" }}>
                 <Link to="/">Go to Home </Link>
             </p>

@@ -5,9 +5,7 @@ import MailtoButton from 'src/Components/Util/MailtoButton';
 
 export default function Footer() {
 
-    var contextNavbar = useContext(NavbarContext);
-
-    const navbarType = contextNavbar.navbar;
+    var contextNavbar = useContext(NavbarContext);    
 
     return (
         <>

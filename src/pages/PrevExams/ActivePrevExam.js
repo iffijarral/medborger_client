@@ -18,21 +18,22 @@ const ActivePrevExam = () => {
     const [errorMsg, setErrorMsg] = useState('');
 
     useEffect(() => {
+        const getExam = async () => {        
+            setLoading(true); // Start loading
+            const response = await getRequest('prevexams/'+year+'/'+season); // Fetch Data             
+            setLoading(false)        
+            if (response.status === 200) {            
+                setExam(response.data);
+            } else {
+                setError(true)
+                setErrorMsg(response.data.message)
+            }
+    
+        }
         getExam()
     }, [])
 
-    const getExam = async () => {        
-        setLoading(true); // Start loading
-        const response = await getRequest('prevexams/'+year+'/'+season); // Fetch Data             
-        setLoading(false)        
-        if (response.status === 200) {            
-            setExam(response.data);
-        } else {
-            setError(true)
-            setErrorMsg(response.data.message)
-        }
-
-    }
+    
 
     return (
         <Fragment>

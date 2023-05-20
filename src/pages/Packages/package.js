@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import HandleDialogs from 'src/Components/Util/HandleDialogs';
@@ -11,9 +11,7 @@ export default function MyPackage(props) {
 
     const auth = useContext(AuthContext);    
 
-    const navigate = useNavigate();        
-
-    const [toLocation, setToLocation] = useState('');        
+    const navigate = useNavigate();             
 
     const handleDialogsRef = useRef();
 

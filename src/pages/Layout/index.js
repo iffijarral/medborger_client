@@ -1,5 +1,4 @@
-import React, { useEffect, useContext } from "react";
-import { AuthContext } from "src/Components/Contexts/AuthContext";
+import React from "react";
 
 import { Outlet } from "react-router-dom";
 import Footer from "src/pages/Footer";

@@ -7,9 +7,7 @@ import { KeyboardArrowUp } from "@mui/icons-material";
 import { Fab, Box } from '@mui/material';
 
 export default function FloatingActionButton() {    
-    const [show, setShow] = React.useState(false)
-
-    const navigate = useNavigate();
+    const [show, setShow] = React.useState(false)    
 
     const handleClick = () => {
         

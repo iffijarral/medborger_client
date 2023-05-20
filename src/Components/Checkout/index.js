@@ -2,10 +2,10 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 // Stripe components
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, ElementsConsumer } from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 // to call API
-import { getRequest, postRequest } from 'src/Setup/AxiosClient';
+import { getRequest } from 'src/Setup/AxiosClient';
 // to call Payment API
 import { postPaymentRequest } from "src/Setup/AxiosClientPayment";
 
@@ -36,43 +36,45 @@ const Checkout = () => {
     var auth = useContext(AuthContext);
 
     useEffect(() => {
+        const getPackage = async () => {
+            setLoading(true)
+            const response = await getRequest('packages/' + packageID)
+            setLoading(false)
+            if (response.status === 200) {
+                setPackageState({ ...response.data })
+            } else {
+                setError(true)
+                setErrorMsg(response.data.message)
+            }
+        }
         getPackage()
     }, [])
 
     useEffect(() => {
+        const getClientSecret = async () => {
+            const payload = {
+                packageID: packageID,
+                receipt_email: auth.authState.email
+            }
+            setLoading(true)
+            const response = await postPaymentRequest('create-payment-intent', payload, auth.authState.token)
+            if (response.status === 200)
+                setClientSecret(response.data.clientSecret)
+            else {
+                setError(true)
+                setErrorMsg(response.data.message)
+            }
+            setLoading(false)
+    
+        }
         getClientSecret()
     }, [])
 
-    const getPackage = async () => {
-        setLoading(true)
-        const response = await getRequest('packages/' + packageID)
-        setLoading(false)
-        if (response.status === 200) {
-            setPackageState({ ...response.data })
-        } else {
-            setError(true)
-            setErrorMsg(response.data.message)
-        }
-    }
+    
 
 
 
-    const getClientSecret = async () => {
-        const payload = {
-            packageID: packageID,
-            receipt_email: auth.authState.email
-        }
-        setLoading(true)
-        const response = await postPaymentRequest('create-payment-intent', payload, auth.authState.token)
-        if (response.status === 200)
-            setClientSecret(response.data.clientSecret)
-        else {
-            setError(true)
-            setErrorMsg(response.data.message)
-        }
-        setLoading(false)
-
-    }
+    
     const options = {
         // passing the client secret obtained from the server
         clientSecret: clientSecret,
