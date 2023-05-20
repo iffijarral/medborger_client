@@ -1,6 +1,8 @@
 {
   
   "name": "school",
+
+  "type": "module",
   
   "version": "0.1.0",
   
@@ -52,6 +54,9 @@
   
     
   "html-react-parser": "^3.0.8",
+  
+    
+  "jest": "^27.5.1",
   
     
   "js-cookie": "^3.0.1",
